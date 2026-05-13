@@ -1,0 +1,5 @@
+@use '../mixins/' as mx;
+@include mx.font-face(Inter, 'Inter18pt-Regular', 400);
+@include mx.font-face(Inter, 'Inter18pt-Medium', 500);
+@include mx.font-face(Inter, 'Inter18pt-SemiBold', 600);
+@include mx.font-face(Inter, 'Inter18pt-Bold', 700);
