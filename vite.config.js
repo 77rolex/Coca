@@ -1,4 +1,7 @@
 import { defineConfig } from 'vite';
+import fileInclude from 'vite-file-include';
+import { ViteImageOptimizer } from 'vite-plugin-image-optimizer';
+import { ViteMinifyPlugin } from 'vite-plugin-minify';
 
 export default defineConfig({
     root: './src',
@@ -9,5 +12,22 @@ export default defineConfig({
     build: {
         outDir: '../dist',
         emptyOutDir: true,
+        rollupOptions: {
+            input: {
+                main: './src/index.html',
+            },
+        },
     },
+    plugins: [
+        ViteMinifyPlugin(),
+        fileInclude(),
+        ViteImageOptimizer({
+            png: {
+                quality: 80,
+            },
+            jpg: {
+                quality: 80,
+            },
+        }),
+    ],
 });

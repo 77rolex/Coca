@@ -1,20 +1,8 @@
 <!doctype html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Coca</title>
-    </head>
+    @@include('./src/html/base/head.html', { "title": "Home"})
     <body class="body" data-theme="light">
-        <div class="container">
-            <h1 class="heading-h1">Hello world!</h1>
-            <p class="text-p-medium">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni
-                mollitia odit optio dolorem facilis, facere iste molestias saepe
-                fuga doloribus fugiat quo porro illum labore eum quos deserunt
-                sequi hic!
-            </p>
-        </div>
+        @@include('./src/html/components/header.html')
         <script type="module" src="js/main.js"></script>
     </body>
 </html>
