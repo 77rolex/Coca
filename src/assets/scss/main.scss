@@ -1,3 +1,6 @@
-@use './mixins/' as mx;
-@use './base/' as bs;
-@use './globals/' as gb;
+@forward './mixins/';
+@forward './base/';
+@forward './globals/';
+
+// components
+@forward './components/';

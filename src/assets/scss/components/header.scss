@@ -1,0 +1,182 @@
+@use '../mixins/' as mx;
+
+.header {
+    padding: 26px 0 22px;
+
+    @include mx.mobile {
+        padding: 22px 0 18px;
+    }
+
+
+    &__container {
+        @include mx.flex-all-between;
+    }
+
+    &__logo {
+        position: relative;
+        z-index: var(--z-index-4);
+
+        & svg {
+            @include mx.mobile {
+                max-width: 130px;
+            }
+
+            & path {
+                &:not(:last-child) {
+                    fill: var(--neutral-color-text);
+                }
+            }
+
+            & circle {
+                fill: var(--neutral-color-circle);
+            }
+        }
+    }
+
+    &__right {
+        @include mx.flex-align-center;
+        gap: 114px;
+
+        @include mx.tablet {
+            gap: 60px;
+        }
+
+        @include mx.small-tablet {
+            position: fixed;
+            top: 0;
+            left: -100vw;
+            z-index: var(--z-index-3);
+            flex-direction: column;
+            justify-content: center;
+            width: 80dvw;
+            height: 100dvh;
+            background-color: var(--neutral-color-10);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+
+            &--visible {
+                left: 0;
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+
+    &__switcher {
+        position: relative;
+        border-radius: 13px;
+        width: 63px;
+        height: 27px;
+        background-color: var(--neutral-color-130);
+        transform: translateY(8px);
+        transition: var(--transition);
+
+        &::before {
+            content: '';
+            position: absolute;
+            top: 2px;
+            left: 3px;
+            display: inline-block;
+            border-radius: 50%;
+            width: 23px;
+            height: 23px;
+            background: var(--neutral-color-120);
+            transition: var(--transition);
+        }
+
+        &-text {
+            position: absolute;
+            top: -24px;
+            left: 50%;
+            font-weight: 600;
+            line-height: 150%;
+            text-align: center;
+            color: var(--neutral-color-140);
+            transform: translateX(-50%);
+        }
+
+        &-checkbox {
+            appearance: none;
+            background-color: var(--neutral-color-60);
+        }
+
+        &:has(&-checkbox:checked) {
+            background-color: var(--neutral-color-60);
+
+            &::before {
+                left: unset;
+                right: 3px;
+                background-color: var(--primary-color-50);
+            }
+        }
+    }
+}
+
+.nav {
+    &__list {
+        @include mx.flex-align-center;
+        gap: 32px;
+
+        @include mx.small-tablet {
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        @include mx.mobile {
+            gap: 10px;
+        }
+    }
+
+    &__link {
+        position: relative;
+        font-weight: 500;
+        line-height: 162%;
+        color: var(--neutral-color-100);
+
+        @include mx.small-tablet {
+            line-height: 200%;
+        }
+
+        &::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -5px;
+            height: 1px;
+            background-color: var(--neutral-color-100);
+            opacity: 0;
+            visibility: hidden;
+            transition: var(--transition);
+        }
+
+        &:hover {
+            &::after {
+                opacity: 1;
+                visibility: visible;
+            }
+        }
+    }
+}
+
+.overlay {
+    @include mx.small-tablet {
+        position: fixed;
+        inset: 0;
+        z-index: var(--z-index-2);
+        background-color: #000000b3;
+        opacity: 0;
+        visibility: hidden;
+        transition: var(--transition);
+
+        &--visible {
+            opacity: 1;
+            visibility: visible;
+        }
+    }
+}
+
+.burger {
+    @include mx.burger;
+}
