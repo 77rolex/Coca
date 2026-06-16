@@ -1,3 +1,5 @@
+@use '../mixins/' as mx;
+
 html {
     box-sizing: border-box;
     font-family: Inter, sans-serif;
@@ -13,7 +15,6 @@ html {
 }
 
 .body {
-    position: relative;
     overflow-x: hidden;
     color: var(--neutral-color-100);
     background-color: var(--neutral-color-10);
